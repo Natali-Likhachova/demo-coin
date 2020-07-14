@@ -25,9 +25,14 @@
             price: '',
             isLoading: true,
         }),
-        async mounted() {
-            this.price = await getTicker(this.pair);
-            this.isLoading = false;
+        mounted() {
+            const updateRate = async () => {
+                this.price = await getTicker(this.pair);
+                this.isLoading = false;
+            }
+            updateRate();
+            setInterval(updateRate, 1000);
+
         }
     };
 </script>

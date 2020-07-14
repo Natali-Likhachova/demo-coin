@@ -1,8 +1,8 @@
 <template>
     <div class="root">
         <h1>{{ pair }}</h1>
-        <h2>{{ price }}</h2>
-        <i class="fas fa-cog fa-spin"></i>
+        <h2 v-if="!isLoading">{{ price }}</h2>
+        <i v-if="isLoading" class="fas fa-cog fa-spin"></i>
     </div>
 </template>
 
@@ -17,12 +17,18 @@
 </style>
 
 <script>
+    import { getTicker } from "../api";
+
     export default {
         data: () => ({
-            pair: 'BTC_USD',
+            pair: 'btc_usd',
             price: '',
             isLoading: true,
         }),
+        async mounted() {
+            this.price = await getTicker(this.pair);
+            this.isLoading = false;
+        }
     };
 </script>
 

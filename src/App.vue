@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <List />
-    <Ticker pair="btc_usd" />
-    <Ticker pair="eth_usd" />
+    <List @itemsupdated="updateList" class="list"/>
+    <div class="tickers">
+      <Ticker v-for="ticker in items" :pair="ticker" :key="ticker" />
+    </div>
   </div>
 </template>
 
@@ -15,6 +16,24 @@ export default {
   components: {
     List,
     Ticker
+  },
+  data: () => ({ items: [] }),
+  methods:{
+    updateList(items){
+      this.items = items;
+      console.log(this.items);
+    }
   }
 }
 </script>
+
+<style scoped>
+  .list{
+    width: 30%;
+    float: left;
+  }
+  .tickers{
+    width: 70%;
+  }
+
+</style>

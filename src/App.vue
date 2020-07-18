@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <Ticker />
+    <Ticker pair="btc_usd" />
+    <Ticker pair="eth_usd" />
   </div>
 </template>
 

@@ -7,8 +7,7 @@
 </template>
 
 <script>
-import Ticker from './components/Ticker.vue'
-import List from './components/List.vue'
+import Ticker from './components/Ticker'
 import List from "./components/List";
 
 export default {

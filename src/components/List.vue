@@ -1,19 +1,17 @@
 <template>
     <div class="root">
         <ul>
-            <li :key="key" v-for="(value, key) in pairs">{{ key }}</li>
+            <li :key="key" v-for="(value, key) in pairs">
+                <label><input type="checkbox" @change="selectItem" />{{ key }}</label>
+            </li>
         </ul>
     </div>
 </template>
 
 <style scoped>
-    .root{
-        display: inline-block;
-        border: solid black 3px;
-        border-radius: 5px;
-        padding: 10px;
-        margin: 10px;
-        text-align: center;
+    ul{
+       list-style-type: none;
+        padding: 0;
     }
 </style>
 
@@ -24,6 +22,11 @@
         data: () => ({
             pairs: pairsData.pairs,
         }),
+        methods: {
+            selectItem(){
+                console.log(123);
+            },
+        },
     };
 
 </script>
